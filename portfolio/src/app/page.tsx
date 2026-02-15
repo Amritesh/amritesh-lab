@@ -2,6 +2,7 @@ import { HeroScene } from "@/components/canvas/hero-scene";
 import Link from "next/link";
 import { ArrowRight, Box, Cpu, Eye, Code, Brain, Laptop } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -82,8 +83,14 @@ export default function Home() {
                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-slate-900/40 backdrop-blur-sm hover:border-emerald-500/50 transition-all duration-500 hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]">
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="aspect-video bg-slate-900/50 flex items-center justify-center relative overflow-hidden">
-                     <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20"></div>
-                     <Box className="w-12 h-12 text-slate-600 group-hover:text-emerald-400 transition-colors relative z-10 transform group-hover:scale-110 duration-500" />
+                     <Image
+                        src="/nature.png"
+                        alt="Nature Simulation"
+                        fill
+                        className="object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-500"
+                     />
+                     <div className="absolute inset-0 bg-slate-900/60 group-hover:bg-slate-900/20 transition-colors duration-500" />
+                     <Box className="w-12 h-12 text-white/80 group-hover:text-emerald-400 transition-colors relative z-10 transform group-hover:scale-110 duration-500 group-hover:opacity-0" />
                   </div>
                   <div className="p-6 relative z-10">
                      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-emerald-300 transition-colors">Nature Simulation</h3>
@@ -98,8 +105,14 @@ export default function Home() {
                <div className="group relative overflow-hidden rounded-xl border border-white/10 bg-slate-900/40 backdrop-blur-sm hover:border-emerald-500/50 transition-all duration-500 hover:shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)]">
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="aspect-video bg-slate-900/50 flex items-center justify-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20"></div>
-                     <Eye className="w-12 h-12 text-slate-600 group-hover:text-emerald-400 transition-colors relative z-10 transform group-hover:scale-110 duration-500" />
+                      <Image
+                        src="/stocks.png"
+                        alt="Stock Evaluator"
+                        fill
+                        className="object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-500"
+                     />
+                     <div className="absolute inset-0 bg-slate-900/60 group-hover:bg-slate-900/20 transition-colors duration-500" />
+                     <Eye className="w-12 h-12 text-white/80 group-hover:text-emerald-400 transition-colors relative z-10 transform group-hover:scale-110 duration-500 group-hover:opacity-0" />
                   </div>
                   <div className="p-6 relative z-10">
                      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-emerald-300 transition-colors">Stock Evaluator</h3>

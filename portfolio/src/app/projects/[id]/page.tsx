@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ExternalLink, Github, Layers, Microscope, Cpu, CheckCircle } from "lucide-react";
+import Image from "next/image";
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -22,8 +23,21 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
   return (
     <article className="min-h-screen pt-24 pb-20 overflow-hidden">
       
-      {/* Background Gradient */}
-      <div className={`absolute top-0 left-0 w-full h-[50vh] ${project.thumbnail} opacity-20 -z-10 blur-3xl`} />
+      {/* Background Gradient or Image */}
+      {project.thumbnailImg ? (
+        <div className="absolute top-0 left-0 w-full h-[60vh] -z-10">
+           <Image
+             src={project.thumbnailImg}
+             alt={project.title}
+             fill
+             className="object-cover opacity-20 blur-xl"
+             priority
+           />
+           <div className="absolute inset-0 bg-gradient-to-b from-background/0 via-background/80 to-background" />
+        </div>
+      ) : (
+        <div className={`absolute top-0 left-0 w-full h-[50vh] ${project.thumbnail} opacity-20 -z-10 blur-3xl`} />
+      )}
 
       <div className="container mx-auto px-4 max-w-6xl">
         

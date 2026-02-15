@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Filter, Grid, List, Search } from "lucide-react";
+import Image from "next/image";
 
 export default function ProjectsPage() {
   const [activeDomain, setActiveDomain] = useState<string>("All");
@@ -96,9 +97,17 @@ export default function ProjectsPage() {
                 <div className="h-full glass-card rounded-xl overflow-hidden flex flex-col relative group-hover:border-blue-500/30 transition-colors">
                   
                   {/* Thumbnail Placeholder */}
-                  <div className={`h-48 w-full ${project.thumbnail} relative overflow-hidden`}>
+                  <div className={`h-48 w-full ${!project.thumbnailImg ? project.thumbnail : 'bg-slate-900'} relative overflow-hidden`}>
+                     {project.thumbnailImg && (
+                       <Image
+                         src={project.thumbnailImg}
+                         alt={project.title}
+                         fill
+                         className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                       />
+                     )}
                      <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-                     <div className="absolute bottom-3 left-3 flex gap-2">
+                     <div className="absolute bottom-3 left-3 flex gap-2 z-10">
                         <Badge variant="secondary" className="bg-black/50 backdrop-blur-sm text-white border-none text-[10px]">
                             {project.interactionType}
                         </Badge>

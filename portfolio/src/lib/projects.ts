@@ -9,6 +9,7 @@ export interface Project {
   tech: ("Three.js" | "React" | "Node" | "Python" | "ML")[];
   interactionType: "Simulator" | "Game" | "Visualizer" | "Evaluator";
   thumbnail: string; // Gradient placeholder for now
+  thumbnailImg?: string; // Image path
   images: string[];
   demoUrl?: string;
   githubUrl?: string;
@@ -172,6 +173,7 @@ export const projects: Project[] = [
     interactionType: "Game",
     tags: ["Boids", "AI", "Relaxation"],
     thumbnail: "bg-gradient-to-br from-emerald-600 to-green-900",
+    thumbnailImg: "/nature.png",
     images: [],
     demoUrl: "https://amritesh.github.io/Nature/",
     githubUrl: "https://github.com/Amritesh/Nature",
@@ -195,6 +197,7 @@ export const projects: Project[] = [
     interactionType: "Evaluator",
     tags: ["FinTech", "Data Viz", "Statistics", "Monte Carlo"],
     thumbnail: "bg-gradient-to-br from-slate-600 to-slate-900",
+    thumbnailImg: "/stocks.png",
     images: ["/stock-evaluator-screenshot.png", "/github-repo.png"],
     demoUrl: "https://amritesh.github.io/Stocks/",
     githubUrl: "https://github.com/Amritesh/Stocks",
