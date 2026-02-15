@@ -6,7 +6,6 @@
     "portfolio"
   ],
   "scripts": {
-    "install": "npm install",
     "build": "cd portfolio && npm install && npm run build"
   }
 }
