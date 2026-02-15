@@ -9,14 +9,32 @@ import { Mail, MapPin, Send, CheckCircle2 } from "lucide-react";
 export default function ContactPage() {
   const [formState, setFormState] = useState<"idle" | "submitting" | "success">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormState("submitting");
     
-    // Simulate network request
-    setTimeout(() => {
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const response = await fetch("https://formspree.io/f/meelgwnr", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
         setFormState("success");
-    }, 1500);
+      } else {
+        // Handle error (could set an error state here, but for now we'll just log it)
+        console.error("Form submission failed");
+        setFormState("idle");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormState("idle");
+    }
   };
 
   return (
@@ -82,31 +100,34 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
                         <label htmlFor="name" className="text-sm font-medium text-slate-300">Name</label>
-                        <Input 
-                            id="name" 
-                            placeholder="John Doe" 
-                            required 
+                        <Input
+                            id="name"
+                            name="name"
+                            placeholder="John Doe"
+                            required
                             className="bg-black/20 border-white/10 text-white placeholder:text-slate-600 focus:border-blue-500"
                         />
                     </div>
                     
                     <div className="space-y-2">
                         <label htmlFor="email" className="text-sm font-medium text-slate-300">Email</label>
-                        <Input 
-                            id="email" 
-                            type="email" 
-                            placeholder="john@example.com" 
-                            required 
+                        <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="john@example.com"
+                            required
                             className="bg-black/20 border-white/10 text-white placeholder:text-slate-600 focus:border-blue-500"
                         />
                     </div>
 
                     <div className="space-y-2">
                         <label htmlFor="message" className="text-sm font-medium text-slate-300">Message</label>
-                        <Textarea 
-                            id="message" 
-                            placeholder="Describe your project parameters..." 
-                            required 
+                        <Textarea
+                            id="message"
+                            name="message"
+                            placeholder="Describe your project parameters..."
+                            required
                             className="min-h-[150px] bg-black/20 border-white/10 text-white placeholder:text-slate-600 focus:border-blue-500"
                         />
                     </div>
