@@ -1,0 +1,12 @@
+{
+  "name": "amritesh-lab",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "portfolio"
+  ],
+  "scripts": {
+    "install": "npm install",
+    "build": "cd portfolio && npm install && npm run build"
+  }
+}
